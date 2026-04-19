@@ -4,7 +4,7 @@ import 'package:gamers_brew/features/profile/bloc/profile_state.dart';
 import 'package:gamers_brew/features/profile/repository/profile_repository.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
-  final ProfileRepository _repository; // Используем правильный тип
+  final ProfileRepository _repository;
 
   ProfileBloc({required ProfileRepository repository}) 
       : _repository = repository, 
@@ -17,7 +17,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(state.copyWith(user: user, isLoading: false));
       } catch (e) {
         emit(state.copyWith(isLoading: false));
-        // Здесь можно добавить обработку ошибки (ErrorState)
       }
     });
 
@@ -42,7 +41,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         emit(state.copyWith(
           user: state.user!.copyWith(
             level: state.user!.level + 1, 
-            xp: newXp - state.user!.nextLevelXp // Остаток опыта переносим
+            xp: newXp - state.user!.nextLevelXp 
           ),
           showLevelUp: true,
         ));

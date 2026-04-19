@@ -28,7 +28,7 @@ class ProfilePage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                  child: _buildXpBar(user), // Метод из предыдущего ответа
+                  child: _buildXpBar(user), 
                 ),
               ),
               _buildMenuSection(context),
@@ -76,7 +76,6 @@ class ProfilePage extends StatelessWidget {
         _menuTile(Icons.notifications_none, "Уведомления", () {}),
         const Divider(color: Colors.white10, height: 40),
         _menuTile(Icons.logout, "Выйти", () {
-  // Показываем диалог подтверждения
   showDialog(
     context: context,
     builder: (context) => AlertDialog(

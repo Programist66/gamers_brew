@@ -48,7 +48,6 @@ class CoffeeProductCard extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Название - шрифт уменьшен с 21 до 14
                       Text(
                         product.name,
                         style: const TextStyle(
@@ -60,7 +59,6 @@ class CoffeeProductCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       const SizedBox(height: 2),
-                      // Описание - шрифт уменьшен с 16 до 11
                       Text(
                         product.description,
                         style: TextStyle(fontSize: 11, color: Colors.grey[400]),
@@ -74,9 +72,8 @@ class CoffeeProductCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Цена - шрифт уменьшен с 18 до 13
                       Text(
-                        '${product.price.toInt()} ₽', // toInt() чтобы убрать .0 если цена целая
+                        '${product.price.toInt()} ₽',
                         style: const TextStyle(
                           fontSize: 13,
                           color: Colors.white,
@@ -85,14 +82,13 @@ class CoffeeProductCard extends StatelessWidget {
                       ),
                       // Кнопка добавления
                       Container(
-                        width: 28, // Фиксированный маленький размер кнопки
+                        width: 28, 
                         height: 28,
                         decoration: BoxDecoration(
-                          color: AppColors.primary, // Используем твой AppColors
+                          color: AppColors.primary,
                           borderRadius: BorderRadius.circular(14),
                         ),
                         child: IconButton(
-                          // Иконка уменьшена с 35 до 18
                           icon: const Icon(Icons.add, color: Colors.white, size: 18),
                           onPressed: () {
                              context.read<CartBloc>().add(AddToCart(product));

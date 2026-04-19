@@ -18,7 +18,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     LoadProductData event,
     Emitter<ProductState> emit,
   ) async {
-    emit(const ProductLoading()); // Первая загрузка — категорий еще нет
+    emit(const ProductLoading());
     try {
       final items = await coffeeRepository.getCatalog();
       final categories = await coffeeRepository.getCategories();
@@ -38,7 +38,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     ChangeCategory event,
     Emitter<ProductState> emit,
   ) async {
-    // 1. Сохраняем то, что уже есть в памяти
     List<String> currentCategories = [];
     if (state is ProductLoaded) {
       currentCategories = (state as ProductLoaded).categories;

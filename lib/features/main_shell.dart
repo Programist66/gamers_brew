@@ -11,12 +11,11 @@ class ScaffoldWithNavBar extends StatelessWidget {
     return Scaffold(
       body: child,
       bottomNavigationBar: BottomNavigationBar(
-        // Добавляем стиль, чтобы видеть выделение
         selectedItemColor: AppColors.primary, 
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed, // Чтобы иконки не "прыгали" при нажатии
-        backgroundColor: AppColors.backgroundDark, // Или твой фоновый цвет
+        type: BottomNavigationBarType.fixed, 
+        backgroundColor: AppColors.backgroundDark, 
         
         currentIndex: _calculateSelectedIndex(context),
         onTap: (index) => _onItemTapped(index, context),
@@ -32,7 +31,6 @@ class ScaffoldWithNavBar extends StatelessWidget {
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.path;
     
-    // Проверяй пути в соответствии с тем, как они описаны в твоем GoRouter
     if (location == '/' || location.startsWith('/home')) return 0;
     if (location.startsWith('/orders')) return 1;
     if (location.startsWith('/profile')) return 2;
@@ -42,7 +40,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        context.go('/home'); // Убедись, что в GoRouter путь именно /home, а не /
+        context.go('/home');
         break;
       case 1:
         context.go('/orders');

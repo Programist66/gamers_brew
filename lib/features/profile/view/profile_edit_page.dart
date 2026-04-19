@@ -14,7 +14,6 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
-  // Ключ для управления формой
   final _formKey = GlobalKey<FormState>();
 
   late TextEditingController _nameController;
@@ -35,7 +34,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     super.dispose();
   }
 
-  // Метод для валидации Email
   bool _isValidEmail(String email) {
     return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
   }
@@ -60,7 +58,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
             elevation: 0,
           ),
           body: Form(
-            key: _formKey, // Привязываем ключ
+            key: _formKey,
             child: Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
@@ -128,7 +126,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
-          validator: validator, // Назначаем валидатор
+          validator: validator, 
           keyboardType: keyboardType,
           style: const TextStyle(color: Colors.white, fontSize: 16),
           cursorColor: const Color(0xFF00E676),
@@ -181,7 +179,6 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
         onPressed: state.isLoading
             ? null
             : () {
-                // Запускаем проверку всех валидаторов в форме
                 if (_formKey.currentState!.validate()) {
                   context.read<ProfileBloc>().add(
                     UpdateProfile(

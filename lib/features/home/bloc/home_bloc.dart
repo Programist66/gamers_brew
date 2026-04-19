@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../repository/coffee_repository.dart';
 import 'home_event.dart';
@@ -19,7 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       var images = await coffeeRepository.getCarouselImages();
       emit(HomeLoaded(carouselImages: images));
     } catch (e) {
-      // Здесь можно добавить HomeError стейт
+      log(e.toString());
     }
   }
 }

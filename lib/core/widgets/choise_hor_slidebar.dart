@@ -3,13 +3,13 @@ import 'package:gamers_brew/core/theme/app_colors.dart';
 
 class HorSliderBar extends StatelessWidget {
   final List<String> items;
-  final String activeCategory; // Теперь получаем это из Блока
+  final String activeCategory; 
   final void Function(String) onCategoryChanged;
 
   const HorSliderBar({
     super.key,
     required this.items,
-    required this.activeCategory, // Обязательный параметр
+    required this.activeCategory, 
     required this.onCategoryChanged,
   });
 

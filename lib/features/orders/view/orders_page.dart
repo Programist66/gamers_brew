@@ -25,18 +25,15 @@ class OrdersPage extends StatelessWidget {
             return Center(child: Text(state.message, style: const TextStyle(color: Colors.white)));
           }
           if (state is OrdersLoaded) {
-            // Добавляем Pull-to-Refresh
             return RefreshIndicator(
               color: AppColors.primary,
               onRefresh: () async {
-                // Отправляем событие загрузки и ждем завершения
                 context.read<OrdersBloc>().add(LoadOrders());
-                // Ждем пока BLoC не обновит стейт (или просто задержка для красоты)
                 await Future.delayed(const Duration(seconds: 1));
               },
               child: ListView.builder(
                 padding: const EdgeInsets.all(16),
-                physics: const AlwaysScrollableScrollPhysics(), // Важно для работы RefreshIndicator на пустых списках
+                physics: const AlwaysScrollableScrollPhysics(), 
                 itemCount: state.orders.length,
                 itemBuilder: (context, index) => _OrderCard(order: state.orders[index]),
               ),
@@ -70,7 +67,6 @@ class _OrderCard extends StatelessWidget {
             children: [
               Text('ЗАКАЗ #${order.id}', 
                 style: const TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.1)),
-              // Теперь виджет определен ниже
               _StatusBadge(status: order.status),
             ],
           ),
@@ -94,7 +90,6 @@ class _OrderCard extends StatelessWidget {
   }
 }
 
-// РЕАЛИЗАЦИЯ НЕДОСТАЮЩЕГО ВИДЖЕТА _StatusBadge
 class _StatusBadge extends StatelessWidget {
   final OrderStatus status;
   const _StatusBadge({required this.status});
